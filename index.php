@@ -14,7 +14,7 @@
       <ul style="list-style: none;">
         <li>Урок 1</li>
         <li><a href="lessons/lesson2.php">Урок 2</a></li>
-        <li>Урок 3</li>
+        <li><a href="lessons/lesson3.php">Урок 3</a></li>
         <li>Урок 4</li>
         <li>Урок 5</li>
       </ul>
