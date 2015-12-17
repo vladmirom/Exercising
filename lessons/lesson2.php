@@ -11,6 +11,7 @@
   </head>
   <body>
     <section class="container">
+      <h2><a href="https://docs.google.com/document/d/1EbBb72XrQG5T2t_fCDB65NER9TBE-04btmT69YwmRTc/edit">Lecture 2</a></h2>
       <h2>Exercise 1</h2>
       <div class="row">
         <div class="col-xs-12 col-md-2">
@@ -191,7 +192,7 @@
     </section>
 
     <section class="container">
-      <h2>Exercise 3.2</h2>
+      <h2>Exercise 5</h2>
       <div class="row">
         <div class="col-xs-12 col-md-2">
           <h4>Задание:</h4>
@@ -221,6 +222,18 @@
 
           for ($i = 0; $i < count($fruits); $i++) {
             echo str_shuffle($fruits[$i]) . '</br>';
+          }
+
+          echo '<hr>';
+
+          echo '<h4>Вариант 3</h4>';
+          echo '<p>Нужно было вывести слова с заду на перед:</p>';
+          $fruits = str_split('apple');
+          $appleLast = end($fruits);
+
+          for ($i = 0; $i <= count($fruits); $i++) {
+            echo current($fruits);
+            prev($fruits);
           }
           ?>
         </div>

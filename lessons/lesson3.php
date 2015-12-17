@@ -11,14 +11,14 @@
   </head>
   <body>
     <section class="container">
+      <h2><a href="https://docs.google.com/document/d/1BTNpEZba4D0ap_UhvQvdfDvpRNksoKPgUSkKtBLivOA/edit">Lecture 3</a></h2>
       <h2>Exercise 1</h2>
       <div class="row">
         <div class="col-xs-12 col-md-2">
           <h4>Задание:</h4>
         </div>
         <div class="col-xs-12 col-md-10">
-          <p>Создать индексированный масив с 5 элементами (названия животных).
-          С помощью цикла foreach() вывести все ключи и значения элементов массива.</p>
+          <p>Напишите функцию для вычисления площади круга. S = π*r2.</p>
         </div>
       </div>
       <div class="row">
@@ -27,11 +27,19 @@
         </div>
         <div class="col-xs-12 col-md-10">
           <?php // Code Here!
-            $animal = array('dog', 'cat', 'fish', 'elephant', 'jaguar');
 
-            foreach ($animal as $key => $value) {
-              echo $key . '</br>';
+            function circle($r) {
+              //vars
+              $pi = pi();
+              $radius = $r * 2;
+
+              //code
+              $S = $radius * $pi;
+              return $S;
             }
+
+            $circleRadius = 10;
+            echo '<p>Площадь круга будет равна: ' . circle($circleRadius) . ' при радиусе ' . $circleRadius . '.</p>';
           ?>
         </div>
       </div>
@@ -44,7 +52,16 @@
           <h4>Задание:</h4>
         </div>
         <div class="col-xs-12 col-md-10">
-          <p>Выведите все элементы массива, из предыдущего задания, с помощью цикла for().</p>
+          <p>Напишите функцию рассчета скорости движения машины. На основании полученных данных: пройденный путь и время.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-md-2">
+          <h4>Дополнительно:</h4>
+        </div>
+        <div class="col-xs-12 col-md-10">
+          <p>Введите в функцию еще один <b>необязательный</b> аргумент $unit, который <b>по умолчанию</b> будет иметь значение “km/h”.
+            Если же этот аргумент получает значение “m/s”, то и функция должна вернуть результат в этих единицах измерения.</p>
         </div>
       </div>
       <div class="row">
@@ -53,9 +70,32 @@
         </div>
         <div class="col-xs-12 col-md-10">
           <?php // Code Here!
-            for ( $i = 0; $i < count($animal); $i++ ) {
-              echo $animal[$i] . '</br>';
+          function car_speed($distance, $time) {
+            $hours = $time / 60;
+            $speed = $distance / $hours;
+            return 'Если машине нужно ' . $time . ' минут, для того чтобы преодолеть ' . $distance . 'км, то ее скорость будет ' . $speed . 'км/ч.';
+          }
+
+          echo car_speed(100, 150) . '<br>';
+
+          function car_speed_advanced($distance, $time, $unit = 'km/h') {
+            $hours = $time / 60;
+            $speed = $distance / $hours;
+
+            if ($unit === 'km/h') {
+              return 'Если машине нужно ' . $time . ' минут, для того чтобы преодолеть ' . $distance . 'км, то ее скорость будет ' . $speed . $unit;
+            } elseif ($unit === 'm/s') {
+              $meters = $distance * 1000;
+              $seconds = $time * 60;
+              $speed = $meters / $seconds;
+
+              return 'Если машине нужно ' . $time . ' минут (' . $seconds . ' секунд), для того чтобы преодолеть ' . $distance . 'км (' . $meters . 'метров), то ее скорость будет ' . $speed . $unit;
             }
+          }
+
+          echo '<hr><p><b>Дополнительно</b></p>';
+          echo car_speed_advanced(300, 160, 'm/s') . '<br>';
+
           ?>
         </div>
       </div>
@@ -68,8 +108,21 @@
           <h4>Задание:</h4>
         </div>
         <div class="col-xs-12 col-md-10">
-          <p>В массив из предыдущего задания добавьте животное “unicorn” У этого
-            элемента должень быть ассоциативный ключ “fantasy_animal”.</p>
+          <p>Игральным картам присвоены следующие порядковые номера в зависимости
+            от их достоинства: "валет" - 11, "дама" - 12, "король" - 13, "туз" - 14.
+            Порядковые номера остальных карт соответствуют их названиям.
+            Напишите функцию, которая принимает номер карты, а <b>возвращает</b> ее название.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-md-2">
+          <h4>Дополнительно:</h4>
+        </div>
+        <div class="col-xs-12 col-md-10">
+          <ol>
+            <li>Для решения удобно воспользоваться оператором <b>switch</b>.</li>
+            <li>Учтите случай когда введен неверный номер карты. Например, 20, 53 или строка текста.</li>
+          </ol>
         </div>
       </div>
       <div class="row">
@@ -78,261 +131,74 @@
         </div>
         <div class="col-xs-12 col-md-10">
           <?php // Code Here!
-            $animal['fantasy_animal'] = 'unicorn';
+            function cards ($card_number) {
+              switch ($card_number) {
 
-             for ( $i = 0; $i < count($animal) - 1; $i++ ) {
-               echo $animal[$i] . '</br>';
-             }
-             echo end($animal);
+                case 2:
+                  echo "Your card is 2";
+                  break;
 
-          ?>
-        </div>
-      </div>
-    </section>
+                case 3:
+                  echo "Your card is 3";
+                  break;
 
-    <section class="container">
-      <h2>Exercise 3.1</h2>
-      <div class="row">
-        <div class="col-xs-12 col-md-2">
-          <h4>Задание:</h4>
-        </div>
-        <div class="col-xs-12 col-md-10">
-          <p>С помощью foreach() выведите массив животных в виде ХТМЛ таблицы.
-            В левой колонке должны быть ключи, в правой - названия животных
-          </p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12 col-md-2">
-          <h4>Решение:</h4>
-        </div>
-        <div class="col-xs-12 col-md-10">
-          <?php // Code Here!
-          echo '<table>';
-            foreach ($animal as $key => $value) {
-              echo '<tr>' . '<td style="padding: 5px; border: 2px solid black;">';
-              echo $key . '</br>';
-              echo '</td>' . '<td style="padding: 5px; border: 2px solid black;">';
-              echo $value . '</br>';
-              echo '</td>' . '</tr>';
-            }
-          echo '</table>';
-          ?>
-        </div>
-      </div>
-    </section>
+                case 4:
+                  echo "Your card is 4";
+                  break;
 
-    <section class="container">
-      <h2>Exercise 3.2</h2>
-      <div class="row">
-        <div class="col-xs-12 col-md-2">
-          <h4>Задание:</h4>
-        </div>
-        <div class="col-xs-12 col-md-10">
-          <p>С помощью цикла for() заполните пустой массив числами от 1 до 50.
-            После этого выведет на экран все числа из массива которые делятся на 3.
-          </p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12 col-md-2">
-          <h4>Решение:</h4>
-        </div>
-        <div class="col-xs-12 col-md-10">
-          <?php // Code Here!
-            $arr = array ();
-            for ( $i = 0; $i <= 50; $i++ ) {
-              if ($i % 3 == 0) {
-                echo $i . '</br>';
+                case 5:
+                  echo "Your card is 5";
+                  break;
+
+                case 6:
+                  echo "Your card is 6";
+                  break;
+
+                case 7:
+                  echo "Your card is 7";
+                  break;
+
+                case 8:
+                  echo "Your card is 8";
+                  break;
+
+                case 9:
+                  echo "Your card is 9";
+                  break;
+
+                case 10:
+                  echo "Your card is 10";
+                  break;
+
+                case 11:
+                  echo "Your card is Jack";
+                  break;
+
+                case 12:
+                  echo "Your card is Queen";
+                  break;
+
+                case 13:
+                  echo "Your card is King";
+                  break;
+
+                case 14:
+                  echo "Your card is A";
+                  break;
+
+                case is_string($card_number) == true:
+                  echo "You didn't enter the number. Please use numbers only, not letters.";
+                  break;
+
+                default:
+                  echo "You didn't enter the valid number. Please enter the number between 2 and 14.";
               }
             }
-          ?>
-        </div>
-      </div>
-    </section>
 
-    <section class="container">
-      <h2>Exercise 4</h2>
-      <div class="row">
-        <div class="col-xs-12 col-md-2">
-          <h4>Задание:</h4>
-        </div>
-        <div class="col-xs-12 col-md-10">
-          <p>Нарисовать таблицу умножения с помощью for().</p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12 col-md-2">
-          <h4>Решение:</h4>
-        </div>
-        <div class="col-xs-12 col-md-10">
-          <?php // Code Here!
+            echo cards('') . '<br>';
+            echo 'А тут вопрос, если это пустая строка, мне выводит дефолт, а не
+            специальный кейс который для этого предназначен.';
 
-          echo '<table><thead><tr>Multiplication table</tr><tr>';
-          //Table head
-            for ($i = 1; $i <= 10; $i++) {
-              echo '<td style="padding: 5px; border-bottom: 1px solid black;">' . $i . '</td>';
-            }
-          echo '</tr></thead>';
-
-          //Table body
-          for ($i = 1; $i <= 10; $i++) {
-            echo '<tr>';
-            for ($u = 1; $u <= 10; $u++) {
-              echo '<td style="padding: 5px;">' . ($i * $u) . '</td>';
-            };
-            echo '</tr>';
-          }
-          echo '</table>';
-
-          ?>
-        </div>
-      </div>
-    </section>
-
-    <section class="container">
-      <h2>Exercise 3.2</h2>
-      <div class="row">
-        <div class="col-xs-12 col-md-2">
-          <h4>Задание:</h4>
-        </div>
-        <div class="col-xs-12 col-md-10">
-          <p>Вводится слово, выводится его перевертыш. Например, вводим "elephant" получаем "tnahpele".
-          </p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12 col-md-2">
-          <h4>Решение:</h4>
-        </div>
-        <div class="col-xs-12 col-md-10">
-          <?php // Code Here!
-          echo '<h4>Вариант 1</h4>';
-          $fruits = str_split('apple');
-          shuffle($fruits);
-
-          for ($i = 0; $i < count($fruits); $i++) {
-            echo $fruits[$i];
-          }
-          echo '<hr>';
-
-          echo '<h4>Вариант 2</h4>';
-          $fruits = array ('apple', 'peach', 'plum', 'apricot');
-
-          for ($i = 0; $i < count($fruits); $i++) {
-            echo str_shuffle($fruits[$i]) . '</br>';
-          }
-          ?>
-        </div>
-      </div>
-    </section>
-
-    <section class="container">
-      <h2>Exercise 6.1</h2>
-      <div class="row">
-        <div class="col-xs-12 col-md-2">
-          <h4>Задание:</h4>
-        </div>
-        <div class="col-xs-12 col-md-10">
-          <p>Ниже представлены четыре пароля, зашифрованных методом MD5. Необходимо их расшифровать перебором символов.
-          N.B.: Пароли включают только английские буквы в нижней раскладке, а длина пароля не прывешает <b>одного</b> символа.</p>
-
-          <p>
-              0cc175b9c0f1b6a831c399e269772661<br>
-              8ce4b16b22b58894aa86c421e8759df3<br>
-              415290769594460e2e485922904f345d<br>
-              fbade9e36a3f36d3d676c1b808451dd7<br>
-          </p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12 col-md-2">
-          <h4>Решение:</h4>
-        </div>
-        <div class="col-xs-12 col-md-10">
-          <?php // Code Here!
-          $alphabet = array ('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l',
-          'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z');
-
-          for ($i = 0; $i < count($alphabet); $i++) {
-            $symbol = md5( $alphabet[$i] );
-
-            if ($symbol == '0cc175b9c0f1b6a831c399e269772661') {
-              echo $alphabet[$i] . '<br>';
-            } elseif ($symbol == '8ce4b16b22b58894aa86c421e8759df3') {
-                echo $alphabet[$i] . '<br>';
-            } elseif ($symbol == '415290769594460e2e485922904f345d') {
-                echo $alphabet[$i] . '<br>';
-            } elseif ($symbol == 'fbade9e36a3f36d3d676c1b808451dd7') {
-                echo $alphabet[$i] . '<br>';
-            }
-          }
-          ?>
-        </div>
-      </div>
-    </section>
-
-    <section class="container">
-      <h2>Exercise 6.2</h2>
-      <div class="row">
-        <div class="col-xs-12 col-md-2">
-          <h4>Задание:</h4>
-        </div>
-        <div class="col-xs-12 col-md-10">
-          <p>Ниже представлены четыре пароля, зашифрованных методом MD5. Необходимо их расшифровать перебором символов.
-            N.B.: Пароли включают только английские буквы в нижней раскладке, а длина пароля не прывешает <b>четырёх</b> символов.</p>
-
-          <p>
-            ee11cbb19052e40b07aac0ca060c23ee</br>
-            dd97813dd40be87559aaefed642c3fbb</br>
-            8dbc672497bdc46f88e864bb1121232c</br>
-            3e10f8c809242d3a0f94c18e7addb866</br>
-          </p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12 col-md-2">
-          <h4>Решение:</h4>
-        </div>
-        <div class="col-xs-12 col-md-10">
-          <?php // Code Here!
-          $alphabet = array ('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l',
-          'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z');
-
-
-            for ($i = 0; $i < count($alphabet); $i++) {
-              $symbol =  $alphabet[$i] ;
-              $password = md5($symbol);
-              //echo $password . '<br>';
-
-              for ($u = 0; $u < count($alphabet); $u++) {
-                $symbol =  $alphabet[$i] . $alphabet[$u];
-                $password = md5($symbol);
-                //echo $password . '<br>';
-
-                for ($a = 0; $a < count($alphabet); $a++) {
-                  $symbol =  $alphabet[$i] . $alphabet[$u] . $alphabet[$a];
-                  $password = md5($symbol);
-                  //echo $password . '<br>';
-
-                  for ($z = 0; $z < count($alphabet); $z++) {
-                    $symbol =  $alphabet[$i] . $alphabet[$u] . $alphabet[$a] . $alphabet[$z];
-                    $password = md5($symbol);
-                    //echo $password . '<br>';
-
-                    if ($password == 'ee11cbb19052e40b07aac0ca060c23ee') {
-                        echo $symbol . '<br>';
-                    } elseif ($password == 'dd97813dd40be87559aaefed642c3fbb') {
-                        echo $symbol . '<br>';
-                    } elseif ($password == '8dbc672497bdc46f88e864bb1121232c') {
-                        echo $symbol . '<br>';
-                    } elseif ($password == '3e10f8c809242d3a0f94c18e7addb866') {
-                        echo $symbol . '<br>';
-                    }
-                  }
-                }
-              }
-            }
           ?>
         </div>
       </div>
