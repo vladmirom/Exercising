@@ -203,5 +203,142 @@
         </div>
       </div>
     </section>
+
+    <section class="container">
+      <h2>Exercise 4</h2>
+      <div class="row">
+        <div class="col-xs-12 col-md-2">
+          <h4>Задание:</h4>
+        </div>
+        <div class="col-xs-12 col-md-10">
+          <p>Напишите функцию возведения числа в степень. Стандартную функцию pow() использовать нельзя.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-md-2">
+          <h4>Решение:</h4>
+        </div>
+        <div class="col-xs-12 col-md-10">
+          <?php // Code Here!
+            echo '<p>Trying <b>pow()</b> function here: </p>';
+            echo pow(3, 5);
+            echo '<hr>';
+
+            echo '<p>Tried <b>**</b> operator that works starting from php 5.6.
+            Seems that my php is lower and it is not working here. I used echo 3**5; </p>';
+            echo '<hr>';
+
+            echo 'Using function here: </p>';
+            function exponent ($base, $exp) {
+              if ( $exp == 1 ) { //выведет значение в степени 1
+                return $base;
+              } else {
+                $base_main = $base * $base;
+              }
+
+              for ($i = 2; $i <= $exp; $i++) {
+                $base_display = $base_main . '<br>';
+                $base_main = $base_main * $base;
+              }
+              echo $base_display; //выведет только последнее значение
+            }
+
+            echo exponent(3, 5);
+
+          ?>
+        </div>
+      </div>
+    </section>
+
+    <section class="container">
+      <h2>Exercise 5</h2>
+      <div class="row">
+        <div class="col-xs-12 col-md-2">
+          <h4>Задание:</h4>
+        </div>
+        <div class="col-xs-12 col-md-10">
+          <p>Напишите функцию для вывода таблицы умножения.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-md-2">
+          <h4>Решение:</h4>
+        </div>
+        <div class="col-xs-12 col-md-10">
+          <?php // Code Here!
+          function multiplictation ($factor, $multiplicand) {
+            echo '<table class="table-condensed"><thead><tr><h4>Multiplication table</h4></tr><tr class="success">';
+            for ($i = 1; $i <= $factor; $i++) {
+              echo '<tr>';
+              for ($u = 1; $u <= $multiplicand; $u++) {
+                echo '<td>' . ($i * $u) . '</td>';
+              };
+              echo '</tr>';
+            }
+            echo '</table>';
+          }
+
+          echo multiplictation (10, 10);
+          ?>
+        </div>
+      </div>
+    </section>
+
+    <section class="container">
+      <h2>Exercise 6</h2>
+      <div class="row">
+        <div class="col-xs-12 col-md-2">
+          <h4>Задание:</h4>
+        </div>
+        <div class="col-xs-12 col-md-10">
+          <p>Написать функцию, которая подсчитывает сумму элементов одномерного массива.
+            Например, такого array( 26, 2.35, "hello", 117, 89, 56, 75.08 )</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-md-2">
+          <h4>Дополнительно:</h4>
+        </div>
+        <div class="col-xs-12 col-md-10">
+          <ol>
+            <li>Использовать встроенную функцию array_sum нельзя, по очевидным причинам.</li>
+            <li>Функция должна <b>возвращать</b> результат, а <b>не выводить</b>.</li>
+            <li>Если в функцию передали не массив, то вернуть текст - “Error: my function expects an array only”.</li>
+            <li>Если какой-то из элементов массива, не integer и не float, то его суммировать не надо.
+              Например 3-ий элемент массива содержит string “hello”, естественно мы его не можем просумировать.
+              Поэтому пропускаем.</li>
+            <li>посмотрите список функций на этой странице http://ua2.php.net/manual/en/ref.var.php
+              Вас интересуют те, названия которых начинаются с “префикса” is_</li>
+          </ol>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-md-2">
+          <h4>Решение:</h4>
+        </div>
+        <div class="col-xs-12 col-md-10">
+          <?php // Code Here!
+          function summa ($array) {
+            if ( is_array($array)) { //проверка, а массив ли это?
+              $summ = 0;
+              for ($i = 1; $i < count($array); $i++) { //идем по каждому элементу массива
+                if ($array[$i] == is_float($array[$i]) || $array[$i] == is_int($array[$i]) ){ //проверяем тип элемента
+                  $summ = $summ + $array[$i];
+                }
+              }
+              return $summ; // возвращает суму всех чисел
+            } else {
+              return 'does not work';
+            }
+          }
+          //Vars
+          $myArray = array(26, 2.35, 'hello', 117, 89, 56, 75.08);
+          $myString = 'Just for testing';
+
+          echo 'Сумма всех чиел массива: ' . summa ($myArray) . '.';
+          ?>
+        </div>
+      </div>
+    </section>
   </body>
 </html>
