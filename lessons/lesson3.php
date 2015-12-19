@@ -335,10 +335,156 @@
           $myArray = array(26, 2.35, 'hello', 117, 89, 56, 75.08);
           $myString = 'Just for testing';
 
-          echo 'Сумма всех чиел массива: ' . summa ($myArray) . '.';
+          echo 'Сумма всех чиcел массива: ' . summa ($myArray) . '.';
           ?>
         </div>
       </div>
     </section>
+
+    <section class="container">
+      <h2>Exercise 7</h2>
+      <div class="row">
+        <div class="col-xs-12 col-md-2">
+          <h4>Задание:</h4>
+        </div>
+        <div class="col-xs-12 col-md-10">
+          <p>Напишите функцию, которая принимает одномерный массив следующего вида:</p>
+          <code>array(<br>
+                  'index.php'    => 'Home',<br>
+                  'about.php'    => 'About Us',<br>
+                  'folio.php'    => 'Portfolio',<br>
+                  'blog.php'     => 'Blog',<br>
+                  'contacts.php' => 'Contact Us',<br>
+              );<br>
+          </code>
+          <p>а на выходе возвращает такой вот результат.</p>
+          <code>
+            &lt;ul&gt;<br>
+                &lt;li&gt;&lt;a href="index.php"&gt;Home&lt;/a&gt;&lt;/li&gt;<br>
+                &lt;li&gt;&lt;a href="about.php"&gt;About Us&lt;/a&gt;&lt;/li&gt;<br>
+                &lt;li&gt;&lt;a href="folio.php"&gt;Portfolio&lt;/a&gt;&lt;/li&gt;<br>
+                &lt;li&gt;&lt;a href="blog.php"&gt;Blog&lt;/a&gt;&lt;/li&gt;<br>
+                &lt;li&gt;&lt;a href="contacts.php"&gt;Contact Us&lt;/a&gt;&lt;/li&gt;<br>
+            &lt;/ul&gt;<br>
+          </code>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-md-2">
+          <h4>Решение:</h4>
+        </div>
+        <div class="col-xs-12 col-md-10">
+          <?php // Code Here!
+            function navbar ($nav){
+              echo '<ul>';
+              foreach ($nav as $key => $value) {
+                echo '<li>' . '<a href="' . $key . '">' . $value . '</a></li>';
+              }
+              echo '</ul>';
+            }
+            $naigation = array (
+            'index.php'    => 'Home',
+            'about.php'    => 'About Us',
+            'folio.php'    => 'Portfolio',
+            'blog.php'     => 'Blog',
+            'contacts.php' => 'Contact Us',
+            );
+            navbar($naigation);
+          ?>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="container">
+      <h2>Exercise 8</h2>
+      <div class="row">
+        <div class="col-xs-12 col-md-2">
+          <h4>Задание:</h4>
+        </div>
+        <div class="col-xs-12 col-md-10">
+          <p>Напишите функцию, которая принимает <b>двумерный массив</b> следующего вида</p>
+          <code>array(<br>
+                  array(<br>
+                      'url' => 'index.php',<br>
+                      'title' => 'Home',<br>
+                  ),<br>
+                  array(<br>
+                      'url' => 'about.php',<br>
+                      'title' => 'About Us',<br>
+                  ),<br>
+                  array(<br>
+                      'url' => 'folio.php',<br>
+                      'title' => 'Portfolio',<br>
+                  ),<br>
+                  array(<br>
+                      'url' => 'blog.php',<br>
+                      'title' => 'Blog',<br>
+                  ),<br>
+                  array(<br>
+                      'url' => 'contacts.php',<br>
+                      'title' => 'Contact Us',<br>
+                  ),<br>
+              );<br>
+          </code>
+          <p>а на выходе возвращает такой вот результат:</p>
+          <code>
+            &lt;ul&gt;<br>
+                &lt;li&gt;&lt;a href="index.php"&gt;Home&lt;/a&gt;&lt;/li&gt;<br>
+                &lt;li&gt;&lt;a href="about.php"&gt;About Us&lt;/a&gt;&lt;/li&gt;<br>
+                &lt;li&gt;&lt;a href="folio.php"&gt;Portfolio&lt;/a&gt;&lt;/li&gt;<br>
+                &lt;li&gt;&lt;a href="blog.php"&gt;Blog&lt;/a&gt;&lt;/li&gt;<br>
+                &lt;li&gt;&lt;a href="contacts.php"&gt;Contact Us&lt;/a&gt;&lt;/li&gt;<br>
+            &lt;/ul&gt;<br>
+          </code>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-md-2">
+          <h4>Решение:</h4>
+        </div>
+        <div class="col-xs-12 col-md-10">
+          <?php // Code Here!
+            function navbar_advanced ($nav){
+              echo '<ul>';
+              for ($i = 0; $i < count($nav); $i++) {
+                foreach ($nav[$i] as $key => $value) {
+                  //echo '<li>' . '<a href="' . $value['url'] . '">' . $value['title'] . '</a></li>';
+                  if ( $key == 'url'){
+                    return $value;
+                  }
+                }
+              }
+              echo '</ul>';
+            }
+
+            $navigation = array(
+                          array(
+                            'url' => 'index.php',
+                            'title' => 'Home',
+                          ),
+                          array(
+                            'url' => 'about.php',
+                            'title' => 'About Us',
+                          ),
+                          array(
+                            'url' => 'folio.php',
+                            'title' => 'Portfolio',
+                          ),
+                          array(
+                            'url' => 'blog.php',
+                            'title' => 'Blog',
+                          ),
+                          array(
+                            'url' => 'contacts.php',
+                            'title' => 'Contact Us',
+                          ),
+                        );
+            echo navbar_advanced($navigation);
+          ?>
+        </div>
+      </div>
+    </section>
+
   </body>
 </html>
