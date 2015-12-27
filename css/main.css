@@ -1,0 +1,54 @@
+.vertical-line{
+    border-left: 3px solid #fdb828;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 1px;
+}
+
+.circle {
+  background: #fdb828;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid #000;
+}
+
+
+.marker {
+  padding: 5px 15px;
+  border-radius: 10px;
+  border: 3px solid #000;
+  background-color: #9D9DA7;
+  width: 75px;
+  text-align: center;
+}
+.marker-text {
+  color: #fff;
+}
+
+/*.container-right {
+  border-radius: 10px;
+  background-color: red;
+  padding: 5px 25px;
+  width: 350px;
+  text-align: right;
+}
+
+.container-left {
+  border-radius: 10px;
+  background-color: red;
+  padding: 5px 25px;
+  width: 350px;
+  text-align: left;
+  display: inline-block;
+}
+
+.nl-content {
+  width: 70%;
+}
+
+.nl-img {
+  width: 25%;
+  display: inline-block;
+}*/
