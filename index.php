@@ -16,7 +16,7 @@
         <li><a href="lessons/lesson2.php">Урок 2</a></li>
         <li><a href="lessons/lesson3.php">Урок 3</a></li>
         <li><a href="lessons/lesson4/lesson4.php">Урок 4</a></li>
-        <li>Урок 5</li>
+        <li><a href="lessons/lesson5/index.php">Урок 5</a></li>
         <li><a href="lessons/lesson_css.php">css</a></li>
       </ul>
   </body>
